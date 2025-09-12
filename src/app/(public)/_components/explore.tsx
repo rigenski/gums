@@ -27,22 +27,22 @@ export default function Explore() {
       id="gallery"
       className="relative h-auto w-full bg-[url('/app/home/explore-bg.png')] bg-cover bg-center"
     >
-      <div className="mx-auto max-w-7xl px-4 py-24">
+      <div className="mx-auto max-w-7xl px-4 pt-20 pb-12 md:pt-40 md:pb-24">
         <div className="flex flex-col items-center justify-center">
-          <h2 className="font-pixelify-sans mb-8 text-center text-6xl font-bold text-[#515151]">
+          <h2 className="font-pixelify-sans mb-8 text-center text-3xl font-bold text-[#515151] md:text-6xl">
             EXPLORE <span className="text-[#A17AF1]">OURS</span>
           </h2>
-          <div className="grid w-full grid-cols-3 gap-4">
+          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
             <div className="col-span-1">
               <div className="flex flex-col gap-4">
                 {getColumnData(1).map((item, index) => (
                   <div
                     className={`w-full overflow-hidden rounded-lg ${
                       index % 3 === 0
-                        ? "h-[400px]"
+                        ? "h-[200px] md:h-[400px]"
                         : index % 3 === 1
-                          ? "h-[320px]"
-                          : "h-[360px]"
+                          ? "h-[160px] md:h-[320px]"
+                          : "h-[180px] md:h-[360px]"
                     }`}
                     key={index}
                   >
@@ -63,10 +63,10 @@ export default function Explore() {
                   <div
                     className={`w-full overflow-hidden rounded-lg ${
                       index % 3 === 0
-                        ? "h-[360px]"
+                        ? "h-[180px] md:h-[360px]"
                         : index % 3 === 1
-                          ? "h-[400px]"
-                          : "h-[320px]"
+                          ? "h-[200px] md:h-[400px]"
+                          : "h-[160px] md:h-[320px]"
                     }`}
                     key={index}
                   >
@@ -87,10 +87,10 @@ export default function Explore() {
                   <div
                     className={`w-full overflow-hidden rounded-lg ${
                       index % 3 === 0
-                        ? "h-[320px]"
+                        ? "h-[160px] md:h-[320px]"
                         : index % 3 === 1
-                          ? "h-[360px]"
-                          : "h-[400px]"
+                          ? "h-[180px] md:h-[360px]"
+                          : "h-[200px] md:h-[400px]"
                     }`}
                     key={index}
                   >

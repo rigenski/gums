@@ -34,37 +34,48 @@ export default function Container() {
   };
 
   return (
-    <section className="flex h-screen items-center justify-center">
+    <section className="flex h-screen items-center justify-center p-4">
       <div className="w-full max-w-sm rounded-md border border-black/25">
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="flex flex-col gap-4 p-8">
+          <div className="flex flex-col gap-4 p-6 md:p-8">
             <div>
-              <h1 className="text-2xl font-bold">Login</h1>
+              <h1 className="text-xl font-bold md:text-2xl">Login</h1>
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="email">Email</label>
+              <label
+                htmlFor="email"
+                className="text-sm font-medium md:text-base"
+              >
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
                 {...form.register("email")}
-                className="rounded-md border-2 border-gray-300 p-2"
+                className="rounded-md border-2 border-gray-300 p-2 text-sm md:text-base"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="password">Password</label>
+              <label
+                htmlFor="password"
+                className="text-sm font-medium md:text-base"
+              >
+                Password
+              </label>
               <input
                 type="password"
                 id="password"
                 {...form.register("password")}
-                className="rounded-md border-2 border-gray-300 p-2"
+                className="rounded-md border-2 border-gray-300 p-2 text-sm md:text-base"
               />
             </div>
             <div>
               <button
                 type="submit"
-                className="w-full rounded-md bg-blue-500 p-2 text-white"
+                className="w-full rounded-md bg-blue-500 p-2 text-sm text-white transition-colors hover:bg-blue-600 md:p-3 md:text-base"
+                disabled={authLoginMutation.isPending}
               >
-                Login
+                {authLoginMutation.isPending ? "Logging in..." : "Login"}
               </button>
             </div>
           </div>

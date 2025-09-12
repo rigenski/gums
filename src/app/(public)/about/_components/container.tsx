@@ -6,37 +6,37 @@ export default function Container() {
   return (
     <main>
       <section className="h-auto min-h-screen w-full bg-[url('/app/about/bottom-bg.png')] bg-cover bg-center">
-        <div className="mx-auto max-w-7xl px-4 pt-8 pb-24">
-          <div className="h-[320px] w-full rounded-4xl bg-[url('/app/about/top-bg.png')] bg-cover bg-center p-8">
+        <div className="mx-auto max-w-7xl px-4 pt-8 pb-12 md:pb-24">
+          <div className="h-[200px] w-full rounded-2xl bg-[url('/app/about/top-bg.png')] bg-cover bg-center p-4 md:h-[320px] md:rounded-4xl md:p-8">
             <Link href="/">
-              <button className="flex items-center justify-center gap-4">
+              <button className="flex items-center justify-center gap-2 md:gap-4">
                 <Image
                   src="/app/about/back-icon.png"
                   alt=""
                   width={480}
                   height={480}
-                  className="h-8 w-auto"
+                  className="h-6 w-auto md:h-8"
                 />
-                <span className="font-pixelify-sans text-2xl font-bold text-[#515151]">
+                <span className="font-pixelify-sans text-lg font-bold text-[#515151] md:text-2xl">
                   ARTIST <span className="text-[#A17AF1]">PROFILE</span>
                 </span>
               </button>
             </Link>
           </div>
-          <div className="-mt-32 mb-16 flex flex-col items-center justify-center gap-4">
+          <div className="-mt-16 mb-8 flex flex-col items-center justify-center gap-4 md:-mt-32 md:mb-16">
             <Image
               src="/app/about/artist-char.png"
               alt=""
               width={480}
               height={480}
-              className="mb-4 h-58 w-auto"
+              className="mb-4 h-32 w-auto md:h-58"
             />
-            <h1 className="font-pixelify-sans mb-4 text-5xl font-bold text-[#515151]">
+            <h1 className="font-pixelify-sans mb-4 text-3xl font-bold text-[#515151] md:text-5xl">
               Kevin <span className="text-[#8772E5]">Varian</span>
             </h1>
             <div className="relative">
               <div className="bg-[#8772E5] px-4 py-2">
-                <span className="font-pixelify-sans text-lg font-bold text-white">
+                <span className="font-pixelify-sans text-sm font-bold text-white md:text-lg">
                   ARTIST
                 </span>
               </div>
@@ -48,11 +48,11 @@ export default function Container() {
               </div>
             </div>
           </div>
-          <div className="bg-white p-8">
-            <h4 className="font-pixelify-sans mb-4 text-4xl font-normal text-[#A17AF1]">
+          <div className="bg-white p-4 md:p-8">
+            <h4 className="font-pixelify-sans mb-4 text-2xl font-normal text-[#A17AF1] md:text-4xl">
               ABOUT KEVIN
             </h4>
-            <p className="font-pixelify-sans text-lg text-[#353232]">
+            <p className="font-pixelify-sans text-sm text-[#353232] md:text-lg">
               I&apos;VE BEEN DRAWING FOR AS LONG AS I CAN REMEMBER. I LOVED
               MAKING CUTE BUT WEIRD CREATURES, INSPIRED BY ALL THE 90&apos;S AND
               EARLY 2000&apos;S CARTOONS I GREW UP WITH ON CARTOON NETWORK,

@@ -4,7 +4,7 @@ import React from "react";
 export default function Video() {
   return (
     <section className="relative h-auto w-full bg-[url('/app/home/video-bg.png')] bg-cover bg-center">
-      <div className="mx-auto max-w-7xl px-4 py-24">
+      <div className="mx-auto max-w-7xl px-4 py-12 md:py-24">
         <div className="relative flex flex-col items-center justify-center overflow-hidden">
           <Image
             src="/app/home/video-border.png"

@@ -63,7 +63,6 @@ export default async function RootLayout({
         <Suspense fallback={null}>
           <ProgressBar />
         </Suspense>
-        <Header />  
         <Providers config={config as TConfig}>{children}</Providers>
       </body>
     </html>

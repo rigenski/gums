@@ -27,10 +27,10 @@ export const metadata: Metadata = {
     title: "GUMZ",
     description:
       "GUMZ is a collection of 10,000 unique NFTs on the Ethereum blockchain.",
-    url: "",
+    url: "https://gums.kevinvarian.com/",
     images: [
       {
-        url: "",
+        url: "/banner.png",
         alt: "GUMZ",
       },
     ],
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     images: ["GUMZ"],
   },
   icons: {
-    icon: "",
+    icon: "/favicon.png",
   },
 };
 

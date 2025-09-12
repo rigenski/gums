@@ -8,7 +8,7 @@ import { fadeInUp, bounceIn, buttonHover } from "@/hooks/useScrollAnimation";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[url('/app/home/hero-bg.png')] bg-cover bg-bottom">
+    <section className="relative h-screen w-full bg-[url('/app/home/hero-bg.png')] bg-cover bg-bottom">
       <div className="mx-auto max-w-7xl px-4 pt-24 md:pt-38">
         <div className="flex flex-col items-center justify-center">
           <motion.div

@@ -1,10 +1,65 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 // Generate array of all 36 gallery images
 const exploreData = Array.from({ length: 36 }, (_, i) => (i + 1).toString());
+
+// Lazy Image Component
+const LazyImage = ({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className: string;
+}) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={imgRef} className={className}>
+      {isInView && (
+        <Image
+          src={src}
+          alt={alt}
+          width={400}
+          height={400}
+          className={`h-full w-full object-cover transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setIsLoaded(true)}
+          priority={false}
+          quality={85}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+        />
+      )}
+    </div>
+  );
+};
 
 // Better distribution for visual balance
 const getColumnData = (column: number) => {
@@ -92,6 +147,53 @@ const galleryItemVariants = {
 export default function Explore() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const [visibleImages, setVisibleImages] = useState(9); // Mulai dengan 9 gambar (3 per kolom)
+
+  // Preload images untuk performa yang lebih baik
+  useEffect(() => {
+    const preloadImages = () => {
+      const firstImages = exploreData.slice(0, 9);
+      firstImages.forEach((item) => {
+        const img = new window.Image();
+        img.src = `/app/gallery/${item}.png`;
+        img.loading = "eager";
+      });
+    };
+
+    preloadImages();
+  }, []);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      // Throttle scroll event
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+
+        // Load lebih banyak gambar saat user scroll ke bawah
+        if (scrollPosition + windowHeight > documentHeight * 0.8) {
+          setVisibleImages((prev) => Math.min(prev + 6, exploreData.length));
+        }
+      }, 100); // Throttle to 100ms
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  // Filter data berdasarkan visible images
+  const getColumnDataLimited = (column: number) => {
+    const allData = getColumnData(column);
+    const itemsPerColumn = Math.ceil(visibleImages / 3);
+    return allData.slice(0, Math.min(itemsPerColumn, allData.length));
+  };
 
   return (
     <section
@@ -146,7 +248,7 @@ export default function Explore() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="flex flex-col gap-4">
-                {getColumnData(1).map((item, index) => (
+                {getColumnDataLimited(1).map((item, index) => (
                   <motion.div
                     className={`w-full overflow-hidden rounded-lg ${
                       index % 3 === 0
@@ -165,14 +267,14 @@ export default function Explore() {
                       delay: index * 0.1,
                     }}
                     whileHover={{
-                      scale: 1.05,
+                      scale: 1.02,
                       transition: { duration: 0.3 },
                     }}
                   >
-                    <img
+                    <LazyImage
                       src={`/app/gallery/${item}.png`}
                       alt={`Gallery image ${item}`}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full"
                     />
                   </motion.div>
                 ))}
@@ -188,7 +290,7 @@ export default function Explore() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="flex flex-col gap-4">
-                {getColumnData(2).map((item, index) => (
+                {getColumnDataLimited(2).map((item, index) => (
                   <motion.div
                     className={`w-full overflow-hidden rounded-lg ${
                       index % 3 === 0
@@ -207,14 +309,14 @@ export default function Explore() {
                       delay: index * 0.1,
                     }}
                     whileHover={{
-                      scale: 1.05,
+                      scale: 1.02,
                       transition: { duration: 0.3 },
                     }}
                   >
-                    <img
+                    <LazyImage
                       src={`/app/gallery/${item}.png`}
                       alt={`Gallery image ${item}`}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full"
                     />
                   </motion.div>
                 ))}
@@ -230,7 +332,7 @@ export default function Explore() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="flex flex-col gap-4">
-                {getColumnData(3).map((item, index) => (
+                {getColumnDataLimited(3).map((item, index) => (
                   <motion.div
                     className={`w-full overflow-hidden rounded-lg ${
                       index % 3 === 0
@@ -249,14 +351,14 @@ export default function Explore() {
                       delay: index * 0.1,
                     }}
                     whileHover={{
-                      scale: 1.05,
+                      scale: 1.02,
                       transition: { duration: 0.3 },
                     }}
                   >
-                    <img
+                    <LazyImage
                       src={`/app/gallery/${item}.png`}
                       alt={`Gallery image ${item}`}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full"
                     />
                   </motion.div>
                 ))}

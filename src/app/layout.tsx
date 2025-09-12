@@ -1,20 +1,21 @@
-import Providers from "@/components/providers";
 import { ProgressBar } from "@/components/progress-bar";
+import Providers from "@/components/providers";
 import { TConfig } from "@/stores/config";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Suspense } from "react";
 import "@/styles/globals.css";
 import "@bprogress/core/css";
+import type { Metadata } from "next";
+import { Manrope, Pixelify_Sans } from "next/font/google";
+import { Suspense } from "react";
+import Header from "@/components/header";
 
-const fontGeistSans = Geist({
-  variable: "--font-geist-sans",
+const fontPixelifySans = Pixelify_Sans({
+  variable: "--font-pixelify-sans",
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
-const fontGeistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const fontManrope = Manrope({
+  variable: "--font-manrope",
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
@@ -57,11 +58,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fontGeistSans.variable} ${fontGeistMono.variable} font-geist-sans antialiased`}
+        className={`${fontPixelifySans.variable} ${fontManrope.variable} font-manrope antialiased`}
       >
         <Suspense fallback={null}>
           <ProgressBar />
         </Suspense>
+        <Header />  
         <Providers config={config as TConfig}>{children}</Providers>
       </body>
     </html>

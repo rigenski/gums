@@ -20,7 +20,7 @@ export function ProgressBar() {
     const style = document.createElement("style");
     style.textContent = `
             .bar {
-                background: #000000 !important;
+                background: #A17AF1 !important;
                 height: 4px !important;
             }
         `;

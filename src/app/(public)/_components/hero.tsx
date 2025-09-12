@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -16,20 +17,24 @@ export default function Hero() {
               <br /> — where every pixel tells a story.
             </p>
             <div className="flex items-center justify-center gap-4">
-              <button className="border-2 border-[#E9E9E9] py-0.5">
-                <div className="bg-[#A17AF1] px-4 py-2">
-                  <span className="font-pixelify-sans text-lg font-bold text-white">
-                    SHOW GALLERY
-                  </span>
-                </div>
-              </button>
-              <button className="border-2 border-[#E9E9E9]">
-                <div className="bg-white px-4 py-2">
-                  <span className="font-pixelify-sans text-lg font-bold text-[#515151]">
-                    ABOUT THE ARTIST
-                  </span>
-                </div>
-              </button>
+              <Link href="#gallery">
+                <button className="border-2 border-[#E9E9E9] py-0.5 shadow-lg">
+                  <div className="bg-[#A17AF1] px-4 py-2">
+                    <span className="font-pixelify-sans text-lg font-bold text-white">
+                      SHOW GALLERY
+                    </span>
+                  </div>
+                </button>
+              </Link>
+              <Link href="/about">
+                <button className="border-2 border-[#E9E9E9] shadow-lg">
+                  <div className="bg-white px-4 py-2">
+                    <span className="font-pixelify-sans text-lg font-bold text-[#515151]">
+                      ABOUT THE ARTIST
+                    </span>
+                  </div>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

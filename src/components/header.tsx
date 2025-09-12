@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,35 +19,44 @@ export default function Header() {
               />
             </Link>
             <div className="flex gap-2">
-              <button className="min-h-full bg-[url('/components/header/btn-bg.png')] bg-cover bg-center px-8 py-2">
-                <div className="flex items-center justify-center">
-                  <Image
-                    src="/components/header/pf-icon.png"
-                    alt=""
-                    width={480}
-                    height={480}
-                    className="h-5 w-auto"
-                  />
-                </div>
-              </button>
-              <button className="min-h-full bg-[url('/components/header/btn-bg.png')] bg-cover bg-center px-8 py-2">
-                <div className="flex items-center justify-center">
-                  <Image
-                    src="/components/header/x-icon.png"
-                    alt=""
-                    width={480}
-                    height={480}
-                    className="h-5 w-auto"
-                  />
-                </div>
-              </button>
-              <button className="border-2 border-[#E9E9E9] py-0.5">
-                <div className="bg-[#A17AF1] px-4 py-2">
-                  <span className="font-pixelify-sans text-lg font-bold text-white">
-                    SHOW GALLERY
-                  </span>
-                </div>
-              </button>
+              <Link
+                href={process.env.NEXT_PUBLIC_PF_URL || "/"}
+                target="_blank"
+              >
+                <button className="min-h-full bg-[url('/components/header/btn-bg.png')] bg-cover bg-center px-8 py-2">
+                  <div className="flex items-center justify-center">
+                    <Image
+                      src="/components/header/pf-icon.png"
+                      alt=""
+                      width={480}
+                      height={480}
+                      className="h-5 w-auto"
+                    />
+                  </div>
+                </button>
+              </Link>
+              <Link href={process.env.NEXT_PUBLIC_X_URL || "/"} target="_blank">
+                <button className="min-h-full bg-[url('/components/header/btn-bg.png')] bg-cover bg-center px-8 py-2">
+                  <div className="flex items-center justify-center">
+                    <Image
+                      src="/components/header/x-icon.png"
+                      alt=""
+                      width={480}
+                      height={480}
+                      className="h-5 w-auto"
+                    />
+                  </div>
+                </button>
+              </Link>
+              <Link href="#gallery">
+                <button className="border-2 border-[#E9E9E9] py-0.5">
+                  <div className="bg-[#A17AF1] px-4 py-2">
+                    <span className="font-pixelify-sans text-lg font-bold text-white">
+                      SHOW GALLERY
+                    </span>
+                  </div>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

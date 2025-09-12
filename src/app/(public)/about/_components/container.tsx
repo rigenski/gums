@@ -23,7 +23,7 @@ export default function Container() {
               </button>
             </Link>
           </div>
-          <div className="-mt-24 mb-16 flex flex-col items-center justify-center gap-4">
+          <div className="-mt-32 mb-16 flex flex-col items-center justify-center gap-4">
             <Image
               src="/app/about/artist-char.png"
               alt=""

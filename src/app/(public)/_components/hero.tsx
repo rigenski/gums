@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section className="relative h-screen w-full bg-[url('/app/home/hero-bg.png')] bg-cover bg-bottom">
-      <div className="mx-auto max-w-7xl px-4 pt-48">
+      <div className="mx-auto max-w-7xl px-4 pt-38">
         <div className="flex flex-col items-center justify-center">
           <div className="">
             <h2 className="font-pixelify-sans mb-4 text-center text-6xl font-bold text-[#515151]">

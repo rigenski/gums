@@ -21,24 +21,26 @@ const fontManrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Nodewave",
-  description: "Node Solusi Indonesia",
+  title: "GUMZ",
+  description: "Step Into a World of Chaos Colour",
   openGraph: {
-    title: "",
-    description: "",
+    title: "GUMZ",
+    description:
+      "GUMZ is a collection of 10,000 unique NFTs on the Ethereum blockchain.",
     url: "",
     images: [
       {
         url: "",
-        alt: "",
+        alt: "GUMZ",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "",
-    description: "",
-    images: [""],
+    title: "GUMZ",
+    description:
+      "GUMZ is a collection of 10,000 unique NFTs on the Ethereum blockchain.",
+    images: ["GUMZ"],
   },
   icons: {
     icon: "",

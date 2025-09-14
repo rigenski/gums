@@ -20,7 +20,7 @@ const fontManrope = Manrope({
 
 // export const metadata: Metadata = {
 //   title: "GUMZ",
-//   description: "Step Into a World of Chaos Colour",
+//   description: "Step Into a World of Chaos",
 //   openGraph: {
 //     title: "GUMZ",
 //     description:
@@ -52,14 +52,14 @@ export default async function RootLayout({
 }>) {
   const config = {
     title: "GUMS",
-    description: "Step Into a World of Chaos Colour",
+    description: "Step Into a World of Chaos",
   };
 
   return (
     <html lang="en">
       <head>
         <title>GUMS</title>
-        <meta name="description" content="Step Into a World of Chaos Colour" />
+        <meta name="description" content="Step Into a World of Chaos" />
         <meta
           name="keywords"
           content="GUMS, NFT, collection, Ethereum, blockchain"
@@ -79,10 +79,7 @@ export default async function RootLayout({
         <meta property="og:url" content="https://gums.kevinvarian.com/" />
         <meta property="og:site_name" content="GUMS" />
         <meta property="og:title" content="GUMS" />
-        <meta
-          property="og:description"
-          content="Step Into a World of Chaos Colour"
-        />
+        <meta property="og:description" content="Step Into a World of Chaos" />
         <meta
           property="og:image"
           content="https://gums.kevinvarian.com/banner.png"
@@ -96,7 +93,7 @@ export default async function RootLayout({
         <meta property="twitter:title" content="GUMS" />
         <meta
           property="twitter:description"
-          content="Step Into a World of Chaos Colour"
+          content="Step Into a World of Chaos"
         />
         <meta property="twitter:creator" content="@gumz" />
         <meta property="twitter:site" content="@gumz" />

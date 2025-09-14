@@ -32,7 +32,7 @@ export default function Hero() {
                   transition: { duration: 0.3 },
                 }}
               >
-                CHAOS COLOUR
+                CHAOS
               </motion.span>
             </motion.h2>
             <motion.p
@@ -40,8 +40,8 @@ export default function Hero() {
               variants={fadeInUp}
               transition={{ delay: 0.2 }}
             >
-              An explosion of shapes, humour, and imagination
-              <br /> — where every pixel tells a story.
+              An explosion of shapes, humor and imagination
+              <br /> where every pixel tells a story.
             </motion.p>
             <motion.div
               className="flex flex-col items-center justify-center gap-4 md:flex-row"
@@ -71,7 +71,7 @@ export default function Hero() {
                 >
                   <div className="bg-white px-4 py-2">
                     <span className="font-pixelify-sans text-sm font-bold text-[#515151] md:text-lg">
-                      ABOUT THE ARTIST
+                      ABOUT ME
                     </span>
                   </div>
                 </motion.button>

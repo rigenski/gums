@@ -21,7 +21,8 @@ export default function Hero() {
               className="font-pixelify-sans mb-4 text-center text-3xl font-bold text-[#515151] md:text-6xl"
               variants={fadeInUp}
             >
-              STEP INTO A WORLD OF <br />
+              STEP INTO A WORLD
+              <br /> OF{" "}
               <motion.span
                 className="text-[#A17AF1]"
                 variants={bounceIn}

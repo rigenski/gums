@@ -60,8 +60,10 @@ export default function Header() {
               animate="visible"
               transition={{ delay: 0.6 }}
             >
-              {/* <Link
-                href={process.env.NEXT_PUBLIC_PF_URL || "/"}
+              <Link
+                href={
+                  "https://pump.fun/HoxX5vGY4QWTLf2TeThYuUUvgRzN3NFuTJWgzwWjpump"
+                }
                 target="_blank"
               >
                 <motion.button
@@ -83,7 +85,7 @@ export default function Header() {
                     />
                   </div>
                 </motion.button>
-              </Link> */}
+              </Link>
               <Link href={process.env.NEXT_PUBLIC_X_URL || "/"} target="_blank">
                 <motion.button
                   className="min-h-full bg-[url('/components/header/btn-bg.png')] bg-cover bg-center px-4 py-1.5 md:px-8 md:py-2"
